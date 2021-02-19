@@ -21,6 +21,7 @@ public class OpdrachtenLes2 : MonoBehaviour
         Vector3 target = transform.position + Vector3.up * 3;
         Vector3 startPosition = transform.position;
         Vector3 direction = target - startPosition;
+        
         // percent is onze 'genormaliseerde' waarde tussen 0 en 1 
         float percent = 0;
         
