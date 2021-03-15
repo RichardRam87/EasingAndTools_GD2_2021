@@ -17,9 +17,9 @@ public class TweenMachine : MonoBehaviour
         }
     }
 
-    public void MoveGameObject(GameObject objectToMove, Vector3 targetPosition, float speed)
+    public void MoveGameObject(GameObject objectToMove, Vector3 targetPosition, float speed, Func<float, float> EaseMethod)
     {
-        Tween newTween = new Tween(objectToMove, targetPosition, speed);
+        Tween newTween = new Tween(objectToMove, targetPosition, speed, EaseMethod);
         _activeTweens.Add(newTween);
     }
 }

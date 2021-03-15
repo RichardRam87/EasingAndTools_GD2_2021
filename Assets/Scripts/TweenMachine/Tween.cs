@@ -15,7 +15,7 @@ public class Tween
 
     private Func<float, float> EaseMethod;
     
-    public Tween(GameObject objectToMove, Vector3 targetPosition, float speed)
+    public Tween(GameObject objectToMove, Vector3 targetPosition, float speed, Func<float, float> Method)
     {
         _gameObject = objectToMove;
         _targetPosition = targetPosition;
@@ -26,7 +26,7 @@ public class Tween
         _percent = 0;
 
         // TODO: In argument verwerken van constructor
-        EaseMethod = Easings.EaseInQuad;
+        EaseMethod = Method;
         
         Debug.Log("Tween Started");
     }
