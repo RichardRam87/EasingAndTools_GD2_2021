@@ -5,6 +5,10 @@ using UnityEngine;
 
 public static class Easings
 {
+    public static float Linear(float x)
+    {
+        return x;
+    }
     public static float EaseInQuad(float x)
     {
         return x * x;

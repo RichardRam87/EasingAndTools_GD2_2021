@@ -14,16 +14,25 @@ public class TweenTester : MonoBehaviour
             
             switch (easeType)
             {
-                /*
-                 * TODO: uncomment onderstaande code en zorg dat het werkt met enums ;)
-                case 1: 
+                case EaseTypes.Linear: 
+                    FindObjectOfType<TweenMachine>().MoveGameObject(gameObject, targetPosition, speed, Easings.Linear);
+                    break;
+                
+                case EaseTypes.EaseInQuad: 
                     FindObjectOfType<TweenMachine>().MoveGameObject(gameObject, targetPosition, speed, Easings.EaseInQuad);
                     break;
                 
-                case 2:
+                case EaseTypes.EaseInCubic:
+                    FindObjectOfType<TweenMachine>().MoveGameObject(gameObject, targetPosition, speed, Easings.EaseInCubic);
+                    break;
+                
+                case EaseTypes.EaseInQuart:
                     FindObjectOfType<TweenMachine>().MoveGameObject(gameObject, targetPosition, speed, Easings.EaseInQuart);
                     break;
-                */
+                
+                case EaseTypes.EaseInQuint:
+                    FindObjectOfType<TweenMachine>().MoveGameObject(gameObject, targetPosition, speed, Easings.EaseInQuint);
+                    break;
             }
     }
 }
