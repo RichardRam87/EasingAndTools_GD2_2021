@@ -3,29 +3,19 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class Tween
+public abstract class Tween
 {
-    private GameObject _gameObject;
-    private Vector3 _startPosition;
-    private Vector3 _targetPosition;
-    private Vector3 _direction;
-
+    protected GameObject _gameObject;
+    
     private float _speed;
     private float _percent;
-
     private Func<float, float> EaseMethod;
     
-    public Tween(GameObject objectToMove, Vector3 targetPosition, float speed, Func<float, float> Method)
+    public Tween(GameObject objectToTween, float speed, Func<float, float> Method)
     {
-        _gameObject = objectToMove;
-        _targetPosition = targetPosition;
+        _gameObject = objectToTween;
         _speed = speed;
-
-        _startPosition = _gameObject.transform.position;
-        _direction = _targetPosition - _startPosition;
         _percent = 0;
-
-        // TODO: In argument verwerken van constructor
         EaseMethod = Method;
         
         Debug.Log("Tween Started");
@@ -38,14 +28,21 @@ public class Tween
         if (_percent < 1)
         {
             float easeStep = EaseMethod(_percent);
-            _gameObject.transform.position = _startPosition + (_direction * easeStep);
+            PerformTween(easeStep);
             Debug.Log(_gameObject + ": Tween Update");
         }
         else
         {
-            //TODO: deze print wordt elke frame aangeroepen. Moet ik nog fixen... Huiswerk??
-            _gameObject.transform.position = _targetPosition;
+            TweenEnd();
             Debug.Log("Tween Finished!");
         }
     }
+
+    /*
+     * Deze abstracte functies krijgt=en een invulling in child classes
+     * Maar wordt wel aangeroepen in de UpdateTween functie.
+     * Deze class bepaald dus het wanneer, de child class bepaald wat
+     */
+    protected abstract void PerformTween(float easeStep);
+    protected abstract void TweenEnd();
 }
